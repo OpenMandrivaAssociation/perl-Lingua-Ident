@@ -15,7 +15,6 @@ Source:         http://www.cpan.org/modules/by-module/Lingua/%{module}-%{version
 Buildrequires:	perl-devel
 %endif
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 This module implements a statistical language identifier.
