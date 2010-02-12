@@ -1,34 +1,36 @@
-%define	module	Lingua-Ident
-%define	name	perl-%{module}
-%define	version	1.6
-%define	release	%mkrel 6
+%define	upstream_name	 Lingua-Ident
+%define	upstream_version 1.6
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
 Summary:	Statistical language identification 
-License:	GPL or Artistic
+License:	GPL+ or Artistic
 Group:		Development/Perl
-URL:		    http://search.cpan.org/dist/%{module}
-Source:         http://www.cpan.org/modules/by-module/Lingua/%{module}-%{version}.tar.bz2
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:    http://www.cpan.org/modules/by-module/Lingua/%{upstream_name}-%{upstream_version}.tar.bz2
+
 %if %{mdkversion} < 1010
 Buildrequires:	perl-devel
 %endif
+
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 This module implements a statistical language identifier.
 
 %prep
-%setup -q -n %{module}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
-%{__make} test
+# parallel testing with %make doesn't work
+make test
 
 %install
 rm -rf %{buildroot} 
@@ -43,5 +45,3 @@ rm -rf %{buildroot}
 %{_bindir}/*
 %{perl_vendorlib}/Lingua
 %{_mandir}/*/*
-
-
