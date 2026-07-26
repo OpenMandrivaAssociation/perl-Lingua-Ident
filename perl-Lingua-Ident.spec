@@ -1,15 +1,13 @@
 %define	upstream_name	 Lingua-Ident
-%define upstream_version 1.7
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	5
+Version:	1.7
+Release:	6
 
 Summary:	Statistical language identification 
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/Lingua-Ident
-Source0:	https://cpan.metacpan.org/authors/id/M/MP/MPIOTR/Lingua-Ident-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/M/MP/MPIOTR/Lingua-Ident-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -19,7 +17,7 @@ BuildArch:	noarch
 This module implements a statistical language identifier.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -45,9 +43,7 @@ make test
 
 * Fri Feb 12 2010 Jérôme Quelin <jquelin@mandriva.org> 1.600.0-1mdv2010.1
 + Revision: 504944
-- rebuild using %%perl_convert_version
-
-* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 1.6-6mdv2010.0
+- rebuild using %1.7 Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 1.6-6mdv2010.0
 + Revision: 430479
 - rebuild
 
